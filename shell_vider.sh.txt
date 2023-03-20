@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "bonjour tout le monde"
+exit 0
