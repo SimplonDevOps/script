@@ -1,0 +1,51 @@
+#!/bin/sh
+
+sommeTicket()
+{
+ echo "entrez le  nombre de ticket"
+read n
+i=1
+sum=0
+echo "entrez valeur du ticket"
+while [ $i -le $n ]
+do
+	read num
+	sum=$((sum+num))
+	i=$((i+1))
+done
+echo "$sum"
+return $sum
+return $n
+}
+
+nombreTicket(){
+
+ nombre=$n
+echo "nombre de ticket saisi $n"
+ticketMoyen=$(($sum/$n))
+echo "ticket moyen $ticketMoyen"
+return $nombre
+
+
+}
+
+chiffreaffaire(){
+
+	sommeTicket
+	nombreTicket
+	echo "entrez les depenses" 
+	read dep
+	if [ $dep -gt $sum ]
+	then	
+	aff=$(($dep-$sum))
+	echo "CA perte $aff euros"
+	else
+	aff=$(($sum-$dep))
+	echo "CA plus value $aff euros"
+	fi
+}
+
+	
+#sommeTicket
+#nombreTicket
+chiffreaffaire

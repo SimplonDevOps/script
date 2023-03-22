@@ -1,0 +1,15 @@
+#!/bin/bash
+ function mafunction()
+{
+	if [ $1 == $2 ]
+		then
+			echo "c'est bon"
+	else
+		echo "c'est faux"
+  
+	fi
+	return 12
+}
+
+mafunction "e" "f"
+echo "$?"
