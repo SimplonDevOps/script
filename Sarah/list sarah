@@ -1,0 +1,12 @@
+#!/bin/bash 
+
+promo = asd 
+
+list_eleve=(mathys sarah chau jean vider"
+echo ${simplon[@]
+
+for x in ${simplon[@]}; do
+$x= $($x + "asd")
+done 
+echo ${simplon[@]}
+
