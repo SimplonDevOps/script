@@ -15,3 +15,4 @@ average_sales_all_shop=$(( total_sales_all_shops / number ))
 echo Average sales of all shops: $average_sales_all_shop
 
 #print the total sale of each shop:
+awk -F',' '{a[$3]+=$4;}END{for(i in a)print "shop " i", "a[i];}' $x
