@@ -7,7 +7,8 @@ The report shows the number of all tickets (all shops combine), the total sales 
 2. Inside the report9AMdaily.sh: "generate.py" is an argument of show_report_of_a_day.sh file : 
  09*** [..]./show_report_of_a_day.sh generate.py 
  
-3. generate.py is a Python file to call data out and create a file .csv (the name of the file .csv has the detail of time that it be created - time, date, month, year..)  This .csv file shows the detail of the sale: each payment from which customer in which shop 
+3. generate.py is a Python file to call data out and create a file .csv (the name of the file .csv has the detail of time that it be created - time, date, month, year..)
+This .csv file shows the detail of the sale: each payment from which customer in which shop 
 You can find the detail of the head in generate.py such as Pandas.. in the requirements.txt
 
 4. There is an .csv file example in this folder: ventes.csv
