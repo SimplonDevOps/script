@@ -7,7 +7,7 @@ The report shows the number of all tickets (all shops combine), the total sales 
 
 2. Command line inside the report9AMdaily.sh: "generate.py" is an argument of show_report_of_a_day.sh file : 
  09*** [..]./show_report_of_a_day.sh generate.py [..]
- It show the report by less command, so you can see the report by press ENTER to see page by page.
+ It shows the report by less command, so you can see the report in format page by page.
  If you want to quit the report quickly, press q
  
  
