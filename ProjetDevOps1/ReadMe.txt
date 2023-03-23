@@ -4,7 +4,7 @@
 Daily at 9AM, a report of the sales will be putout on the screen automatically.
 The report shows the number of all tickets (all shops combine), the total sales of all shops, the sale of each shop and the average sale of all shops.
 
-2. Inside the report9AMdaily.sh: "generate.py" is an argument of show_report_of_a_day.sh file : 
+2. Command line inside the report9AMdaily.sh: "generate.py" is an argument of show_report_of_a_day.sh file : 
  09*** [..]./show_report_of_a_day.sh generate.py 
  
 3. generate.py is a Python file to call data out and create a file .csv (the name of this .csv file has the detail of time WHEN it be created - time, date, month, year)"
