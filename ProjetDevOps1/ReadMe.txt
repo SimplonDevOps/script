@@ -1,6 +1,7 @@
  Welcome to my first DevOps project.
 
- 1. Run the report9AMdaily.sh to create a new cron job: everyday at 9AM, a report of the sales will be putout on the screen.
+ 1. Run the report9AMdaily.sh to create a new cron job
+Everyday at 9AM, a report of the sales will be putout on the screen.
 The report shows the number of all tickets (all shops combine), the total sales of all shops, the sale of each shop and the average sale of all shops.
 
 2. Inside the report9AMdaily.sh: "generate.py" is an argument of show_report_of_a_day.sh file : 
