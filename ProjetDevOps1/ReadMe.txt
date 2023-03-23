@@ -14,6 +14,7 @@ This .csv file shows the detail of the sale: each payment from which customer in
 
 Python packages used in generate.py (pandas, numpy...): Please find in requirements.txt file  
 
+4. You can test one part of my project by running only file show_report_of_a_day.sh with argument ventes.csv 
 
 
 END.
