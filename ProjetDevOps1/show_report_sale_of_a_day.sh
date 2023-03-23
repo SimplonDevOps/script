@@ -9,12 +9,12 @@ echo Number of tickets: $number
 
 #print the sale total of all the shops:
 total_sales_all_shops=$(awk 'NR>1 { s+=$($4) } END{ print s }' $x)
-echo Total sale of all shops: $total_sales_all_shops
+echo Total sale of all shops: $total_sales_all_shops Dollars
 
 #print the average of sale of the Brand:
 average_sales_all_shop=$(( total_sales_all_shops / number ))
 echo Average sales of all shops: $average_sales_all_shop
 
 #print the total sale of each shop:
-echo Sale in each shop:
-awk -F',' '{a[$3]+=$4;}END{for(i in a)print "shop " i", "a[i];}' $x
+echo Sale of each shop:
+awk -F',' '{a[$3]+=$4;}END{for(i in a)print "shop number " i": "a[i]" Dollars";}' $x | column -t
