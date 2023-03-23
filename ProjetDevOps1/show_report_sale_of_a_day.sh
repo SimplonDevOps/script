@@ -7,7 +7,7 @@ number=$(awk -F',' 'END{ print $1 }' $x)
 echo Number of tickets: $number
 
 #print the sale total of all the shops:
-total_sales_all_shops=$(awk '{ s+=$(NF==2) } END{ print s }' $x)
+total_sales_all_shops=$(awk 'NR>1 { s+=$($4) } END{ print s }' $x)
 echo Total sale of all shops: $total_sales_all_shops
 
 #print the average of sale of the Brand:
