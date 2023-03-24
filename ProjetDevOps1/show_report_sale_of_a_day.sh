@@ -1,8 +1,8 @@
 #!/bin/bash
-#File detail of the day:
-# $1 is 'the' argument of this script when we run it on cron job
 
-x=$1
+#Search for the specific .csv file need to make a report
+read -p Report of date (MM_DD_YYYY): $1
+x=$(ls | grep $1)
 
 #check if we have any bussiness yesterday
 if [ -z $x ] 
