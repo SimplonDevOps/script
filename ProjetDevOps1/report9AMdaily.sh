@@ -24,6 +24,4 @@ yes_report=$(ls | grep $YES_DAT)
 
 #at 09:05, run automatically the show_report_sale_of_a_day.sh with the .csv file has just created at 9AM 
 #Use the variable $yes_report as an argument to the bash file:
-59***./$place/ReportData/show_report_sale_of_a_day.sh $yes_report
-
-
+59***./$place/ReportData/show_report_sale_of_a_day.sh $yes_report | less
