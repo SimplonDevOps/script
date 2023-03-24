@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Le chemin du Répertoire
+repertoire="/home/jmarco/Documents"
+
+while true
+do
+  #Pour Récupérer le dernier fichier
+  dernier_fichier=$(ls -t $repertoire | head -n 1)
+
+  #Pour verifier que le fichier exciste
+  if [[ -n $dernier_fichier ]]
+  then
+
+    # Pour afficher le nom du dernier fichier
+        echo "Le dernier fichier en date dans $directory est : $dernier_fichier"
+
+        # pour afficher le traitement du fichier
+    echo "Le fichier $dernier_fichier a été traité."
+
+  fi
+
+  # Pour le temps de la prochaine vérification
+  sleep 10
+done
