@@ -1,8 +1,7 @@
 #!/bin/bash
 
-#Search for the specific .csv file need to make a report
-read -p Report of date (MM_DD_YYYY): $1
-x=$(ls | grep $1)
+#capture the .csv file which has created at 9AM to a variable:
+x=$1
 
 #check if we have any bussiness yesterday
 if [ -z $x ] 
