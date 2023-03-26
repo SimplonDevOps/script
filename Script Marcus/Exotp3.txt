@@ -1,0 +1,42 @@
+SED
+1 - afficher la premiere ligne d'un fichier1 avec la commande sed
+R- head -n 1 fichier1
+
+2 - afficher la ligne 3 et 5 d'un fichier
+R- awk 'NR==3 || NR==5' fichier
+
+3 - quelle est la différence entre -n, -i et sans option
+R-a) -n : empêche l'affichage automatique des lignes, l'utilisateur doit spécifier explicitement ce qu'il souhaite afficher
+  b) -i : modifie le fichier directement (inplace)
+  c) sans option : affiche toutes les lignes du fichier par défaut
+
+4 effacer toutes les lignes qui commencent par le mot password
+R- sed '/^password/d' fichier
+
+5 faire un script qui prend en argument un fichier et remplacer password=true avec password=false et inversement
+R- sed -i 's/password=true/password=false/g' "fichier3.sh"
+
+AWK
+1- afficher la deuxième et 3ème colonne uniquement du fichier2 avec awk
+R- awk '{print $2, $3}' fichier2.txt
+
+2- faire la même chose avec le fichier3
+R- awk '{print $2, $3}' fichier3.txt
+
+3- en quoi consiste les variables NR, NF et END
+R- a)NR : numéro de ligne actuel
+   b)NF : nombre de champs (colonnes) dans la ligne actuelle
+   c)END : est une condition qui est vraie après que le dernier enregistrement a été lu
+
+4- ajouter le numero de ligne au fichier2
+R- awk '{print NR,$0}' fichier2.txt
+
+5- en tête de page, afficher les colonnes et en fin de page afficher le nombre de ligne
+R- awk 'BEGIN{print "Colonne 1","Colonne 2","Colonne 3"} {print} END{print "nombre de lignes :", NR}' fichier3.txt
+
+CRONTAB
+1- Utiliser une commande crontab pour lancer un de vos scripts à une heure prédéfinie.
+R- 0 5 * * * /tp3/script1.sh
+
+2- Utiliser une commande crontab pour lancer un de vos scripts à intervalle de 2 mi
+R- */02 * * * * /tp3/script2.sh
