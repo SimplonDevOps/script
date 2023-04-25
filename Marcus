@@ -21,5 +21,5 @@ do
   fi
 
   # Pour le temps de la prochaine vérification
-  sleep 10
+  sleep 100
 done
