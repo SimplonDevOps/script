@@ -1,0 +1,36 @@
+script insertion data requete api pole_emploi
+
+import pymysql
+import json
+
+#
+with open('datape.json', 'r') as f:
+    data = json.load(f)
+
+#
+conn = pymysql.connect(host='db', user='root', password='root', db='db_pe')
+
+#
+cur = conn.cursor()
+
+#
+for item in data:
+    id = item['id']
+    description = item['description']
+    intitule = item['intitule']
+    codepostale = item['codepostale']
+    salaire = item['salaire']
+
+    #
+    sql = "INSERT INTO offre (id, description, intitule, codepostale, salaire) VALUES (%s, %s, %s, %s, %s)"
+    val = (id, description, intitule, codepostale, salaire)
+
+    #
+    cur.execute(sql, val)
+
+# validation des modifications
+    conn.commit()
+
+#
+cur.close()
+conn.close()

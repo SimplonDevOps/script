@@ -1,0 +1,67 @@
+script recupération du token+requete à l'api des offres d'emploi de pôle emploi
+
+
+
+#!/bin/bash
+
+#recupration token
+CLIENT_ID="PAR_projet_f79559f74d77774411b6c64f991c3700e2e6d0cd04112317bf5531b2cb4ed41f"
+CLIENT_SECRET="132c784e604fb309a6e886b306680bd28ff51b77c5809b67a02163957b6b27d0"
+SCOPE="api_offresdemploiv2 o2dsoffre"
+
+AUTH_URL="https://entreprise.pole-emploi.fr/connexion/oauth2/access_token?realm=%2Fpartenaire"
+
+TOKEN_RESPONSE=$(curl -s -X POST \
+                        -H "Content-Type: application/x-www-form-urlencoded" \
+                        -d "grant_type=client_credentials" \
+                        -d "client_id=$CLIENT_ID" \
+                        -d "client_secret=$CLIENT_SECRET" \
+                        -d "scope=$SCOPE" \
+                        $AUTH_URL)
+
+#isolation du token dans le resultat
+API_key=$(echo $TOKEN_RESPONSE | jq -r '.access_token')
+
+        echo "$API_key"
+
+sleep 3
+#retour de l'appel des offres emploi ingenieur devops
+
+output_call=$(curl -X GET "https://api.pole-emploi.io/partenaire/offresdemploi/v2/offres/search?motsCles=ingenieur+devops/" \
+    -H "Authorization: Bearer $API_key" \
+    | jq '[.resultats[] | {id,description,intitule,codepostale:.lieuTravail.codePostal,salaire:.salaire.libelle}]')
+
+#creation du fichier json qui servira d'input a la base de donne
+
+FILE=datape.json
+
+if [ -f "$FILE" ]; then
+        echo "$FILE exists."
+        echo  "$output_call" > datape.json
+else
+        echo "$FILE n'existe pas, un nouveau fichier vient d'etre creer."
+        touch datape.json
+#redirection/stockage du resultat dans le fichier json
+        echo "$output_call" > datape.json
+fi
+
+
+
+#creation base de donne
+
+MYSQL_HOST="db"
+MYSQL_USER="root"
+MYSQL_PASSWORD="root"
+MYSQL_DATABASE="db_pe"
+TABLE_NAME="offre"
+MYSQL_PORT="3306"
+mysql -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD -D $MYSQL_DATABASE <<EOF
+CREATE TABLE IF NOT EXISTS $TABLE_NAME (id VARCHAR(255),
+    description LONGTEXT,
+    intitule VARCHAR(255),
+    codepostale VARCHAR(100),
+    salaire VARCHAR(255)
+);
+EOF
+
+
