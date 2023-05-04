@@ -17,4 +17,4 @@ services:
     tty: true
     links:
       - "db"
-    image: image8
+    image: ubuntu:latest
